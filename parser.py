@@ -43,7 +43,18 @@ for f in csv_data:
 
             base = {}
 
-            # Some of the data is missing long/lat details
+            # Some of the data is strange. Since we're importing it, we'll
+            # do some transforms here
+
+            if i[1] == "Mainland China":
+                i[1] = "China"
+
+            if i[1] == "South Korea":
+                i[1] = "Korea, South"
+
+            if i[1] == "Iran (Islamic Republic of)":
+                i[1] = "Iran"
+
             base["province"] = i[0]
             base["country"] = i[1]
 
@@ -60,6 +71,7 @@ for f in csv_data:
             base["deaths"] = int(i[4])
             base["recovered"] = int(i[5])
 
+            # Some of the data is missing long/lat details
             if len(i) == 8:
                 # Elasticsearch geopoint format
                 base["location"] = {"lat": i[6], "lon": i[7]}
