@@ -1,7 +1,7 @@
 {
     "mappings" : {
       "properties" : {
-        "Country" : {
+        "country" : {
           "type" : "text",
           "fields" : {
             "keyword" : {
@@ -10,7 +10,7 @@
             }
           }
         },
-        "Province" : {
+        "province" : {
           "type" : "text",
           "fields" : {
             "keyword" : {
