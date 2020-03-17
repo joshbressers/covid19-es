@@ -9,6 +9,8 @@ import elasticsearch
 import elasticsearch.helpers
 from elasticsearch import Elasticsearch
 
+import location_normalize
+
 # Dates are hard
 last_year4 = re.compile(r'(\d+)\/(\d+)\/(\d{4}) (\d+)\:(\d+)')
 last_year2 = re.compile(r'(\d+)\/(\d+)\/(\d{2}) (\d+)\:(\d+)')
@@ -51,6 +53,9 @@ for f in csv_data:
             # Some of the data is strange. Since we're importing it, we'll
             # do some transforms here
 
+            # Two digit country info
+            base["country2"] = location_normalize.get_code(i[1])
+
             # Country Mangling
             if i[1] == "Mainland China":
                 i[1] = "China"
@@ -60,6 +65,7 @@ for f in csv_data:
                 i[1] = "Iran"
             elif i[1] == "US":
                 i[1] = "United States"
+
 
             base["province"] = i[0]
             base["country"] = i[1]
