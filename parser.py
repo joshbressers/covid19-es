@@ -5,31 +5,15 @@ import json
 import glob
 import csv
 import re
-import elasticsearch
-import elasticsearch.helpers
-from elasticsearch import Elasticsearch
 
-import location_normalize
+from covid19es import location
+from covid19es.eshelper import ES
 
 # Dates are hard
 last_year4 = re.compile(r'(\d+)\/(\d+)\/(\d{4}) (\d+)\:(\d+)')
 last_year2 = re.compile(r'(\d+)\/(\d+)\/(\d{2}) (\d+)\:(\d+)')
 
-if 'ESURL' not in os.environ:
-    es_url = "http://localhost:9200"
-else:
-    es_url = os.environ['ESURL']
-
-es = Elasticsearch([es_url])
-
-# Delete the index if it exists
-if es.indices.exists('covid-19') is True:
-    es.indices.delete(index='covid-19', ignore=[400, 404])
-
-# We have to create it and add a mapping
-fh = open('mapping.json')
-mapping = json.load(fh)
-es.indices.create('covid-19', body=mapping)
+es = ES()
 
 all_data = []
 
@@ -54,7 +38,7 @@ for f in csv_data:
             # do some transforms here
 
             # Two digit country info
-            base["country2"] = location_normalize.get_code(i[1])
+            base["country2"] = location.get_code(i[1])
 
             # Country Mangling
             if i[1] == "Mainland China":
@@ -124,7 +108,4 @@ for f in csv_data:
 
             all_data.append(bulk)
 
-for ok, item in elasticsearch.helpers.streaming_bulk(es, all_data, max_retries=2):
-    if not ok:
-        print("ERROR:")
-        print(item)
+es.add(all_data)
