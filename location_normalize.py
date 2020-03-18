@@ -66,6 +66,8 @@ def get_code(country_name):
             code = 'BO'
         elif cu == 'CONGO (KINSHASA)':
             code = 'CG'
+        elif cu == 'REPUBLIC OF THE CONGO':
+            code = 'CG'
         elif cu == 'COTE D\'IVOIRE':
             code = 'CI'
         elif cu == 'REUNION':
@@ -98,5 +100,13 @@ def get_code(country_name):
             code = 'MO'
         elif cu == 'REPUBLIC OF MOLDOVA':
             code = 'MD'
+        elif cu == 'TANZANIA':
+            code = 'TZ'
+        elif cu == 'THE BAHAMAS':
+            code = 'BS'
+        elif cu == 'THE GAMBIA':
+            code = 'GM'
+        else:
+            raise NameError(cu)
 
     return code
