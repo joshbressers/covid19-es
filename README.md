@@ -10,3 +10,8 @@ directory. The README.md in that directory has a link to their github repo
   need to set the ESURL environment variable. If you need a username and
   password make sure it's part of the URL.
 * Run './parser.py', it shouldn't take long.
+
+I recently added a script called 'ts-parser.py'
+This will create a new index called cov-tx, it uses a different data file
+from CSSE that contains more normalized province names and proper long and
+lat fields
