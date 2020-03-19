@@ -64,8 +64,16 @@ for i in c_csvdata:
         # We need leading zeros
         json_data['day'] = "%d%02d%02d" % (year, month, day)
 
+        if i[idx] == '':
+            i[idx] = '0'
         json_data['confirmed'] = int(i[idx])
+
+        if rec[idx] == '':
+            rec[idx] = '0'
         json_data['recovered'] = int(rec[idx])
+
+        if deaths[idx] == '':
+            deaths[idx] = '0'
         json_data['deaths'] = int(deaths[idx])
 
 

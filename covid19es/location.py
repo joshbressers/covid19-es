@@ -106,6 +106,8 @@ def get_code(country_name):
             code = 'BS'
         elif cu == 'THE GAMBIA':
             code = 'GM'
+        elif cu == 'GAMBIA, THE':
+            code = 'GM'
         else:
             raise NameError(cu)
 
