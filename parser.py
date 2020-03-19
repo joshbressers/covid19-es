@@ -17,7 +17,7 @@ es = ES()
 
 all_data = []
 
-csv_data = glob.glob("data/*.csv")
+csv_data = glob.glob("data/daily/*.csv")
 
 for f in csv_data:
     with open(f, 'r') as csvfile:
@@ -95,7 +95,7 @@ for f in csv_data:
 
             # Now the dates, this is from the filename f
 
-            [month, day, year] = f.split('/')[1].split('.')[0].split('-')
+            [month, day, year] = f.split('/')[-1].split('.')[0].split('-')
 
             base['day'] = "%s%s%s" % (year, month, day)
 
