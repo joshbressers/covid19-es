@@ -6,7 +6,7 @@ import elasticsearch.helpers
 from elasticsearch import Elasticsearch
 
 class ES:
-    def __init__(self, idx='covid-19'):
+    def __init__(self, idx='covid19-country'):
         if 'ESURL' not in os.environ:
             es_url = "http://localhost:9200"
         else:
