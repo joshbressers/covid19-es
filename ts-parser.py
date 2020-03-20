@@ -13,9 +13,9 @@ es = ES(index_name)
 
 all_data = []
 
-c_fh = open("../COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv", 'r')
-r_fh = open("../COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv", 'r')
-d_fh = open("../COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv", 'r')
+c_fh = open("data/time_series/time_series_19-covid-Confirmed.csv", 'r')
+r_fh = open("data/time_series/time_series_19-covid-Recovered.csv", 'r')
+d_fh = open("data/time_series/time_series_19-covid-Deaths.csv", 'r')
 
 c_csvdata = csv.reader(c_fh)
 r_csvdata = csv.reader(r_fh)
