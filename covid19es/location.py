@@ -104,6 +104,8 @@ def get_code(country_name):
             code = 'TZ'
         elif cu == 'THE BAHAMAS':
             code = 'BS'
+        elif cu == 'BAHAMAS, THE':
+            code = 'BS'
         elif cu == 'THE GAMBIA':
             code = 'GM'
         elif cu == 'GAMBIA, THE':
