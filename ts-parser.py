@@ -49,6 +49,8 @@ for i in c_csvdata:
 
 
     base["country2"] = location.get_code(i[1])
+    # Let's use iso3166 country names
+    base["country"] = location.get_country_name(i[1])
     base["population"] = population.get_population(base["country2"])
 
 

@@ -2,6 +2,14 @@
 
 import iso3166
 
+def get_country_name(country_name):
+
+    country2 = get_code(country_name)
+    if country2 == '':
+        return ''
+    else:
+        return iso3166.countries_by_alpha2[country2].name
+
 def get_code(country_name):
 
     # This will be the code we return

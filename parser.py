@@ -41,21 +41,12 @@ for f in csv_data:
             # Two digit country info
             base["country2"] = location.get_code(i[1])
 
-            # Country Mangling
-            if i[1] == "Mainland China":
-                i[1] = "China"
-            elif i[1] == "Korea, South":
-                i[1] = "South Korea"
-            elif i[1] == "Iran (Islamic Republic of)":
-                i[1] = "Iran"
-            elif i[1] == "US":
-                i[1] = "United States"
-
+            base["country"] = location.get_country_name(i[1])
 
             base["province"] = i[0]
-            base["country"] = i[1]
 
             base["population"] = population.get_population(base["country2"])
+
 
             # Some of the last_update timestamps are broken
             match4 = last_year4.match(i[2])
