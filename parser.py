@@ -7,6 +7,7 @@ import csv
 import re
 
 from covid19es import location
+from covid19es import population
 from covid19es.eshelper import ES
 
 # Dates are hard
@@ -53,6 +54,8 @@ for f in csv_data:
 
             base["province"] = i[0]
             base["country"] = i[1]
+
+            base["population"] = population.get_population(base["country2"])
 
             # Some of the last_update timestamps are broken
             match4 = last_year4.match(i[2])

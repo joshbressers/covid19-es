@@ -5,6 +5,7 @@ import json
 import csv
 
 from covid19es import location
+from covid19es import population
 from covid19es.eshelper import ES
 
 index_name = 'cov-ts'
@@ -48,6 +49,8 @@ for i in c_csvdata:
 
 
     base["country2"] = location.get_code(i[1])
+    base["population"] = population.get_population(base["country2"])
+
 
     # Now the dates
     for idx in range(4, len(i)):
