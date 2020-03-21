@@ -76,5 +76,5 @@ for i in c_csvdata:
 es = ES('covid19-country')
 es.add(countries.get_bulk_country())
 
-es = ES('covid19-province')
+es = ES('covid-19')
 es.add(countries.get_bulk_province())

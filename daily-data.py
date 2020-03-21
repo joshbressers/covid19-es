@@ -15,7 +15,6 @@ from covid19es import Countries
 last_year4 = re.compile(r'(\d+)\/(\d+)\/(\d{4}) (\d+)\:(\d+)')
 last_year2 = re.compile(r'(\d+)\/(\d+)\/(\d{2}) (\d+)\:(\d+)')
 
-es = ES()
 countries = Countries()
 
 csv_data = glob.glob("data/daily/*.csv")
@@ -49,7 +48,8 @@ for f in csv_data:
             countries.add_data(day, i[3], i[4], i[5], loc)
 
 
+es = ES('covid19-country')
 es.add(countries.get_bulk_country())
 
-es = ES('covid19-province')
+es = ES('covid-19')
 es.add(countries.get_bulk_province())

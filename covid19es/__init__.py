@@ -59,7 +59,7 @@ class Province:
 
         bulk = {
                 "_op_type": "index",
-                "_index":   "covid19-province"
+                "_index":   "covid-19"
                }
 
         # Only add location data if it exists
