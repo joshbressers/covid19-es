@@ -122,7 +122,9 @@ def get_code(country_name):
             code = 'CV'
         elif cu == 'EAST TIMOR':
             code = 'TL'
+        elif cu == 'SYRIA':
+            code = 'SY'
         else:
-            raise NameError(cu)
+            raise NameError("\'%s\'" % cu)
 
     return code
