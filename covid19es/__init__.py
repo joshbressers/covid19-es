@@ -19,8 +19,8 @@ class Countries:
 
         self.current.add_province(name)
 
-    def add_data(self, day, c, d, r, g):
-        self.current.add_data(day, c, d, r, g)
+    def add_data(self, day, c, d, g):
+        self.current.add_data(day, c, d, g)
 
     def get_bulk_country(self):
 
@@ -46,12 +46,11 @@ class Province:
     def __init__(self, name):
         self.province = name
 
-    def add_data(self, date, confirmed, deaths, recovered, geo):
+    def add_data(self, date, confirmed, deaths, geo):
 
         self.day = date
         self.confirmed = confirmed
         self.deaths = deaths
-        self.recovered = recovered
 
         self.location = geo
 
@@ -68,7 +67,6 @@ class Province:
 
         bulk["confirmed"] = self.confirmed
         bulk["deaths"] = self.deaths
-        bulk["recovered"] = self.recovered
         bulk["province"] = self.province
         bulk["day"] = self.day
 
@@ -81,7 +79,6 @@ class Country:
 
         self.confirmed = 0
         self.deaths = 0
-        self.recovered = 0
 
         self.country2 = location.get_code(name)
         self.country = location.get_country_name(name)
@@ -91,7 +88,7 @@ class Country:
 
         self.provinces.append(Province(name))
 
-    def add_data(self, day, confirmed, deaths, recovered, geo):
+    def add_data(self, day, confirmed, deaths, geo):
 
         if confirmed == '':
             confirmed = 0
@@ -103,17 +100,11 @@ class Country:
         else:
             deaths = int(deaths)
 
-        if recovered == '':
-            recovered = 0
-        else:
-            recovered = int(recovered)
-
         self.confirmed = self.confirmed + int(confirmed)
         self.deaths = self.deaths + int(deaths)
-        self.recovered = self.recovered + int(recovered)
         self.day = day
 
-        self.provinces[-1].add_data(day, confirmed, deaths, recovered, geo)
+        self.provinces[-1].add_data(day, confirmed, deaths, geo)
 
     def get_bulk_country(self):
 
@@ -124,7 +115,6 @@ class Country:
 
         bulk["confirmed"] = self.confirmed
         bulk["deaths"] = self.deaths
-        bulk["recovered"] = self.recovered
         bulk["day"] = self.day
         bulk["country2"] = self.country2
         bulk["country"] = self.country

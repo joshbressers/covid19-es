@@ -11,17 +11,14 @@ from covid19es.eshelper import ES
 
 
 c_fh = open("data/time_series/time_series_19-covid-Confirmed.csv", 'r')
-r_fh = open("data/time_series/time_series_19-covid-Recovered.csv", 'r')
 d_fh = open("data/time_series/time_series_19-covid-Deaths.csv", 'r')
 
 c_csvdata = csv.reader(c_fh)
-r_csvdata = csv.reader(r_fh)
 d_csvdata = csv.reader(d_fh)
 
 first_line = next(c_csvdata)
 
 # We need to skip the first line
-next(r_csvdata)
 next(d_csvdata)
 
 countries = Countries()
@@ -34,7 +31,6 @@ for i in c_csvdata:
 
     # In theory all of these files are sorted the same, we will check this
     # someday
-    rec = next(r_csvdata)
     deaths = next(d_csvdata)
 
 
@@ -62,15 +58,11 @@ for i in c_csvdata:
             i[idx] = '0'
         c = int(i[idx])
 
-        if rec[idx] == '':
-            rec[idx] = '0'
-        r = int(rec[idx])
-
         if deaths[idx] == '':
             deaths[idx] = '0'
         d = int(deaths[idx])
 
-        countries.add_data(day, c, d, r, location)
+        countries.add_data(day, c, d, location)
 
 
 es = ES('covid19-country')

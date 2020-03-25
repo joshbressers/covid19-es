@@ -32,17 +32,10 @@
             "type":   "date",
             "format": "yyyyMMdd"
         },
-        "last_update" : {
-            "type":   "date",
-            "format": "date_hour_minute_second"
-        },
         "confirmed" : {
           "type" : "long"
         },
         "deaths" : {
-          "type" : "long"
-        },
-        "recovered" : {
           "type" : "long"
         },
         "location" : {
