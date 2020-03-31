@@ -10,8 +10,8 @@ from covid19es import Countries
 from covid19es.eshelper import ES
 
 
-c_fh = open("data/time_series/time_series_19-covid-Confirmed.csv", 'r')
-d_fh = open("data/time_series/time_series_19-covid-Deaths.csv", 'r')
+c_fh = open("data/time_series/time_series_covid19_confirmed_global.csv", 'r')
+d_fh = open("data/time_series/time_series_covid19_deaths_global.csv", 'r')
 
 c_csvdata = csv.reader(c_fh)
 d_csvdata = csv.reader(d_fh)

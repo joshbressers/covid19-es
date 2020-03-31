@@ -52,9 +52,13 @@ def get_code(country_name):
             code = ''
         elif cu == 'DIAMOND PRINCESS':
             code = ''
+        elif cu == 'MS ZAANDAM':
+            code = ''
         elif cu == 'CZECH REPUBLIC':
             code = 'CZ'
         elif cu == 'PALESTINE':
+            code = 'PS'
+        elif cu == 'WEST BANK AND GAZA':
             code = 'PS'
         elif cu == 'ST. MARTIN':
             code = 'MF'
@@ -128,6 +132,8 @@ def get_code(country_name):
             code = 'SY'
         elif cu == 'LAOS':
             code = 'LA'
+        elif cu == 'BURMA':
+            code = 'MM'
         else:
             raise NameError("\'%s\'" % cu)
 
